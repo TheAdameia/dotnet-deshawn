@@ -3,7 +3,7 @@ import { Dog } from "./Dog"
 import { getAllDogs } from "../services/getAllDogs.jsx"
 
 
-export const DogList = async () => {
+export const DogList = () => {
     const [allDogs, setAllDogs] = useState([])
     
 
