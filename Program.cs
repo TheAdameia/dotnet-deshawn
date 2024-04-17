@@ -46,5 +46,17 @@ app.MapGet("/api/dogs", () =>
     });
 });
 
+app.MapGet("/api/dogs/{id}", (int id) =>
+{
+    Dog dog = dogs.FirstOrDefault(d => d.Id == id);
+
+    return dogs.Select(d => new DogDTO
+    {
+        Id = d.Id,
+        Name = d.Name,
+        WalkerId = d.WalkerId,
+        CityId = d.CityId
+    });
+});
 
 app.Run();
