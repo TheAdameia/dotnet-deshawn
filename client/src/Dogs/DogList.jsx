@@ -9,7 +9,6 @@ export const DogList = () => {
 
     const getAndSetDogs = () => {
         getAllDogs().then(dogArray => {
-            console.log(dogArray)
             setAllDogs(dogArray)
         })
     }

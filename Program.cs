@@ -30,6 +30,16 @@ List<Dog> dogs = new List<Dog>
     }
 };
 
+List<Walker> walkers = new List<Walker>
+{
+    new Walker
+    {
+        Id = 1,
+        Name = "Felicia Circumabulis",
+        CityId = 1
+    }
+};
+
 app.MapGet("/api/hello", () =>
 {
     return new { Message = "Welcome to DeShawn's Dog Walking" };
@@ -46,5 +56,29 @@ app.MapGet("/api/dogs", () =>
     });
 });
 
+app.MapGet("/api/dogs/{id}", (int id) =>
+{
+    Dog dog = dogs.FirstOrDefault(d => d.Id == id);
+
+    return dogs.Select(d => new DogDTO
+    {
+        Id = d.Id,
+        Name = d.Name,
+        WalkerId = d.WalkerId,
+        CityId = d.CityId
+    });
+});
+
+app.MapGet("/api/walkers/{id}", (int id) =>
+{
+    Walker walker = walkers.FirstOrDefault(w => w.Id == id);
+
+    return walkers.Select(w => new WalkerDTO
+    {
+        Id = w.Id,
+        Name = w.Name,
+        CityId = w.CityId
+    });
+});
 
 app.Run();
