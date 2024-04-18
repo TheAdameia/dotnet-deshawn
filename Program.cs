@@ -95,4 +95,15 @@ app.MapPost("/api/dogs", (Dog dog) =>
     });
 });
 
+app.MapGet("/api/walkers", () =>
+{
+    return walkers.Select(w => new WalkerDTO
+    {
+        Id = w.Id,
+        Name = w.Name,
+        CityId = w.CityId
+    });
+});
+
+
 app.Run();
