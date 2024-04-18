@@ -40,7 +40,7 @@ export const OneDog = () => {
         if (allDogs.length > 0) {
             getOneDogsWalker(fixedParam)
         }
-    }, [oneDog])
+    }, [allDogs, oneDog])
 
 
     return (
