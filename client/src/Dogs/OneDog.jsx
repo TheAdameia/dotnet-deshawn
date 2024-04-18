@@ -2,10 +2,12 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getAllDogs } from "../services/getAllDogs"
 import { Dog } from "./Dog"
+import { GetOneWalker } from "../services/GetOneWalker"
 
 export const OneDog = () => {
     const [allDogs, setAllDogs] = useState([])
     const [oneDog, setOneDog] = useState({})
+    const [dogWalker, setDogWalker] = useState({})
 
     let params = useParams()
     let fixedParam = parseInt(params.dogId)
@@ -15,6 +17,12 @@ export const OneDog = () => {
             setAllDogs(dogArray)
         })
         
+    }
+
+    const getOneDogsWalker = (id) => {
+        GetOneWalker(id).then(walker => {
+            setDogWalker(walker)
+        })
     }
 
     useEffect(() => {
@@ -28,12 +36,20 @@ export const OneDog = () => {
         }
     }, [allDogs])
 
+    useEffect(() => {
+        if (allDogs.length > 0) {
+            getOneDogsWalker(fixedParam)
+        }
+    }, [oneDog])
+
+
     return (
         <div className="dogs-container">
             <article className="dogs">
                 <Dog
                     dog={oneDog}
                     key={oneDog.id}
+                    dogWalker={dogWalker}
                 />
             </article>
         </div>
