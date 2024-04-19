@@ -35,9 +35,74 @@ List<Walker> walkers = new List<Walker>
     new Walker
     {
         Id = 1,
-        Name = "Felicia Circumabulis",
+        Name = "Felicia Circumambulis",
         CityId = 1
-    }
+    },
+    new Walker
+    {
+        Id = 2,
+        Name = "Bob Reegor",
+        CityId = 3
+    },
+    new Walker
+    {
+        Id = 3,
+        Name = "Lady Grace",
+        CityId = 2
+    },
+    new Walker
+    {
+        Id = 4,
+        Name = "The Sweeper",
+        CityId = 2
+    },
+    new Walker
+    {
+        Id = 5,
+        Name = "Smorgasbord Joe",
+        CityId = 1
+    },
+    new Walker
+    {
+        Id = 6,
+        Name = "Eve (pronounced `ev-eh`)",
+        CityId = 4
+    },
+    new Walker
+    {
+        Id = 7,
+        Name = "Unlucky Straightlinewalker",
+        CityId = 5
+    },
+};
+
+List<City> cities = new List<City>
+{
+    new City
+    {
+        Id = 1,
+        Name = "Old Hickory"
+    },
+    new City
+    {
+        Id = 2,
+        Name = "Belle Meade"
+    },
+    new City
+    {
+        Id = 3,
+        Name = "Hendersonville"
+    },
+    new City
+    {
+        Id = 4,
+        Name = "Hermitage"
+    },
+    new City
+    {
+        Id = 5,
+        Name = "The Nations"
+    },
 };
 
 app.MapGet("/api/hello", () =>
@@ -105,5 +170,13 @@ app.MapGet("/api/walkers", () =>
     });
 });
 
+app.MapGet("/api/cities", () => 
+{
+    return cities.Select(c => new CityDTO
+    {
+        Id = c.Id,
+        Name = c.Name
+    });
+});
 
 app.Run();
