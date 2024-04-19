@@ -27,7 +27,50 @@ List<Dog> dogs = new List<Dog>
         Name = "Sparky",
         WalkerId = 1, 
         CityId = 1
-    }
+    },
+    new Dog
+    {
+        Id = 2,
+        Name = "Bella",
+        CityId = 4
+    },
+    new Dog
+    {
+        Id = 3,
+        Name = "Herp-derp",
+        CityId = 3
+    },
+    new Dog
+    {
+        Id = 4,
+        Name = "Bruh",
+        CityId = 1
+    },
+    new Dog
+    {
+        Id = 5,
+        Name = "Georgetown Raiders",
+        WalkerId = 1, 
+        CityId = 1
+    },
+    new Dog
+    {
+        Id = 6,
+        Name = "Fork",
+        CityId = 2
+    },
+    new Dog
+    {
+        Id = 7,
+        Name = "Sock",
+        CityId = 5
+    },
+    new Dog
+    {
+        Id = 8,
+        Name = "Rita",
+        CityId = 1
+    },
 };
 
 List<Walker> walkers = new List<Walker>
@@ -138,12 +181,13 @@ app.MapGet("/api/walkers/{id}", (int id) =>
 {
     Walker walker = walkers.FirstOrDefault(w => w.Id == id);
 
-    return walkers.Select(w => new WalkerDTO
+    return
+    new WalkerDTO
     {
-        Id = w.Id,
-        Name = w.Name,
-        CityId = w.CityId
-    });
+        Id = walker.Id,
+        Name = walker.Name,
+        CityId = walker.CityId
+    };
 });
 
 app.MapPost("/api/dogs", (Dog dog) =>
@@ -176,6 +220,20 @@ app.MapGet("/api/cities", () =>
     {
         Id = c.Id,
         Name = c.Name
+    });
+});
+
+app.MapPost("/api/dogs/updateWalker", (DogWalkerUpdateDTO DogWalkerUpdate) =>
+{
+    Dog dog = dogs.FirstOrDefault(d => d.Id == DogWalkerUpdate.dogsId);
+    dog.WalkerId = DogWalkerUpdate.walkersId;
+
+    return Results.Created($"/dogs/{dog.Id}", new DogDTO
+    {
+        Id = dog.Id,
+        Name = dog.Name,
+        WalkerId = dog.WalkerId,
+        CityId = dog.CityId
     });
 });
 
