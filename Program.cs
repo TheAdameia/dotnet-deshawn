@@ -223,4 +223,18 @@ app.MapGet("/api/cities", () =>
     });
 });
 
+app.MapPost("/api/dogs/updateWalker", (DogWalkerUpdateDTO DogWalkerUpdate) =>
+{
+    Dog dog = dogs.FirstOrDefault(d => d.Id == DogWalkerUpdate.dogsId);
+    dog.WalkerId = DogWalkerUpdate.walkersId;
+
+    return Results.Created($"/dogs/{dog.Id}", new DogDTO
+    {
+        Id = dog.Id,
+        Name = dog.Name,
+        WalkerId = dog.WalkerId,
+        CityId = dog.CityId
+    });
+});
+
 app.Run();

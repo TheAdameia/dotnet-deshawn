@@ -10,7 +10,6 @@ export const SelectDogForWalker = () => {
     const [filteredDogs, setFilteredDogs] = useState([])
     const [walker, setWalker] = useState({})
 
-
     let params = parseInt(useParams().walkerId)
 
     const getAndSetDogs = () => {
@@ -56,6 +55,7 @@ export const SelectDogForWalker = () => {
                         <Dog
                             dog={dog}
                             key={dog.id}
+                            walkerView={walker}
                         />
                     )
                 })}
