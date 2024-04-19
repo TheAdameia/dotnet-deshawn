@@ -19,11 +19,20 @@ export const SelectDogForWalker = () => {
         })
     }
 
-    const getAndSetWalker =() => {
+    const getAndSetWalker = () => {
         GetOneWalker(params).then(W => {
             setWalker(W)
-            console.log(W)
         })
+    }
+
+    const filterDogsByCityAndNoWalker = () => {
+        let filteredArray = []
+        for (const dog of allDogs) {
+            if (dog.walkerId != walker.id && walker.cityId == dog.cityId) {
+                filteredArray.push(dog)
+            }
+        }
+        setFilteredDogs(filteredArray)
     }
 
     useEffect(() => {
@@ -34,11 +43,9 @@ export const SelectDogForWalker = () => {
         getAndSetWalker()
     }, [])
 
-    // useEffect(() => {
-    //     for (const dog of allDogs) {
-    //         if ()
-    //     }
-    // }, [allDogs])
+    useEffect(() => {
+        filterDogsByCityAndNoWalker()
+    }, [allDogs, walker])
 
     return (
         <>
