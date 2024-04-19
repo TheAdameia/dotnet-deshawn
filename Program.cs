@@ -138,12 +138,13 @@ app.MapGet("/api/walkers/{id}", (int id) =>
 {
     Walker walker = walkers.FirstOrDefault(w => w.Id == id);
 
-    return walkers.Select(w => new WalkerDTO
+    return
+    new WalkerDTO
     {
-        Id = w.Id,
-        Name = w.Name,
-        CityId = w.CityId
-    });
+        Id = walker.Id,
+        Name = walker.Name,
+        CityId = walker.CityId
+    };
 });
 
 app.MapPost("/api/dogs", (Dog dog) =>

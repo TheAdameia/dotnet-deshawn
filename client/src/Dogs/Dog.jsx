@@ -13,7 +13,7 @@ export const Dog = ({ dog, dogWalker }) => {
             <div className="dog-info">
                {dog.name} is in {dog.cityId}
             </div>
-            { dogWalker ? <div className="dog-info">and is walked by {dogWalker[0]?.name}</div>: "" }
+            { dogWalker ? <div className="dog-info">and is walked by {dogWalker.name}</div>: "" }
             <button className="btn" onClick={handleClickToViewOne}>View this dog</button>
         </section>
     )
