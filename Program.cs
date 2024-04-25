@@ -237,4 +237,21 @@ app.MapPost("/api/dogs/updateWalker", (DogWalkerUpdateDTO DogWalkerUpdate) =>
     });
 });
 
+app.MapPost("/api/cities", (City city) =>
+{
+    city.Id = cities.Count > 0 ? cities.Max(huh => huh.Id) + 1 : 1;
+    cities.Add(city);
+
+    return Results.Created("/cites", new CityDTO
+    {
+        Id = city.Id,
+        Name = city.Name
+    });
+});
+
 app.Run();
+
+
+
+
+//  order.Id = orders.Count > 0 ? orders.Max(st => st.Id) + 1 : 1; // stashing this here if I need it later
