@@ -11,6 +11,7 @@ import { DogForm } from "./Dogs/DogForm";
 import { WalkerList } from "./Walkers/WalkerList";
 import { SelectDogForWalker } from "./Walkers/SelectDogForWalker";
 import { CitiesList } from "./Cities/CitiesList";
+import { WalkerProfile } from "./Walkers/WalkerProfile";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -29,6 +30,7 @@ root.render(
         <Route path="walkers" element={<WalkerList />} />
         <Route path="walkers/:walkerId" element={<SelectDogForWalker />} />
         <Route path="cities" element={<CitiesList />} />
+        <Route path="walkers/profile/:walkerId" element={<WalkerProfile />} />
       </Route>
     </Routes>
   </BrowserRouter>,

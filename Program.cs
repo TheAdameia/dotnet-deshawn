@@ -148,6 +148,52 @@ List<City> cities = new List<City>
     },
 };
 
+List<WalkerCity> walkerCities = new List<WalkerCity>
+{
+    new WalkerCity
+    {
+        Id = 1,
+        WalkerId = 1,
+        CityId = 1,
+    },
+    new WalkerCity
+    {
+        Id = 2,
+        WalkerId = 2,
+        CityId = 3,
+    },
+    new WalkerCity
+    {
+        Id = 3,
+        WalkerId = 3,
+        CityId = 2,
+    },
+    new WalkerCity
+    {
+        Id = 4,
+        WalkerId = 4,
+        CityId = 2,
+    },
+    new WalkerCity
+    {
+        Id = 5,
+        WalkerId = 5,
+        CityId = 1,
+    },
+    new WalkerCity
+    {
+        Id = 6,
+        WalkerId = 6,
+        CityId = 4,
+    },
+    new WalkerCity
+    {
+        Id = 7,
+        WalkerId = 7,
+        CityId = 5,
+    },
+};
+
 app.MapGet("/api/hello", () =>
 {
     return new { Message = "Welcome to DeShawn's Dog Walking" };
@@ -250,8 +296,3 @@ app.MapPost("/api/cities", (City city) =>
 });
 
 app.Run();
-
-
-
-
-//  order.Id = orders.Count > 0 ? orders.Max(st => st.Id) + 1 : 1; // stashing this here if I need it later

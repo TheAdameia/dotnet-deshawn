@@ -8,8 +8,14 @@ export const Walker = ({ walker }) => {
         navigate(`/walkers/${walker.id}`)
     }
 
+    document.addEventListener("click", event => {
+        if (event.target.name == walker.name) {
+            navigate(`/walkers/profile/${walker.id}`)
+        }
+    })
+
     return (
-        <section className="walker">
+        <section className="walker" name={walker.name}>
             <div className="walker-info">
                {walker.name} is in {walker.cityId}
             </div>
