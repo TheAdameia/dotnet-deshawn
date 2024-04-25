@@ -14,11 +14,21 @@ export const Walker = ({ walker }) => {
         }
     })
 
+    const handleNameClick = (event) => {
+        if (event.target.name == walker.name) {
+            navigate(`/walkers/profile/${walker.id}`)
+        }
+    }
+
     return (
-        <section className="walker" name={walker.name}>
-            <div className="walker-info">
-               {walker.name} is in {walker.cityId}
-            </div>
+        <section className="walker">
+            <button 
+                className="walker-info"
+                name={walker.name}
+                onClick={handleNameClick}
+            >
+                {walker.name} is in {walker.cityId}
+            </button>
             <button 
                 className="btn"
                 onClick={handleClick}
